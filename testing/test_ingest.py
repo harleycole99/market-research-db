@@ -1,5 +1,5 @@
 import pytest
-from ingestion.extract import clean_name
+from main import clean_name
 
 
 def test_clean_name_removes_whitespace():

@@ -1,8 +1,40 @@
 import streamlit as st
+from sqlalchemy import text
 
-# from ingestion.load import load_db
-from ingestion.load import insert_respondent
-from ingestion.extract import clean_name
+
+def clean_name(name_string):
+    cleaned = name_string.strip().capitalize()
+    if cleaned.isalpha():
+        return cleaned
+    else:
+        return None
+
+
+conn = st.connection("neon", type="sql")
+
+
+def insert_respondent(first_name, last_name, age):
+    with conn.session as session:
+        session.execute(
+            text(
+                """
+            CREATE TABLE IF NOT EXISTS respondents (
+                id SERIAL PRIMARY KEY,
+                first_name TEXT,
+                last_name TEXT,
+                age INT
+            );
+        """
+            )
+        )
+        session.execute(
+            text(
+                "INSERT INTO respondents (first_name, last_name, age) VALUES (:first, :last, :age);"
+            ),
+            {"first": first_name, "last": last_name, "age": age},
+        )
+        session.commit()
+
 
 with st.form("details"):
     name = st.text_input("Name")
