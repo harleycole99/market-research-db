@@ -4,7 +4,6 @@ import streamlit as st
 from ingestion.load import insert_respondent
 from ingestion.extract import clean_name
 
-
 with st.form("details"):
     name = st.text_input("Name")
     surname = st.text_input("Surname")
@@ -12,11 +11,9 @@ with st.form("details"):
     submitted = st.form_submit_button("submit")
 
 if submitted:
+    cleanname = clean_name(name)
+    cleansurname = clean_name(surname)
+    # load_db(cleanname, cleansurname, age)
+    insert_respondent(cleanname, cleansurname, age)
+
     st.write(f"Hello {name}, Your details have been saved")
-
-cleanname = clean_name(name)
-cleansurname = clean_name(surname)
-
-# load_db(cleanname, cleansurname, age)
-
-insert_respondent(cleanname, cleansurname, age)
