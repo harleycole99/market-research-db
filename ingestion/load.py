@@ -14,6 +14,19 @@ def insert_respondent(first_name, last_name, age):
     with conn.session as session:
         session.execute(
             text(
+                """
+            CREATE TABLE IF NOT EXISTS respondents (
+                id SERIAL PRIMARY KEY,
+                first_name TEXT,
+                last_name TEXT,
+                age INT
+            );
+        """
+            )
+        )
+
+        session.execute(
+            text(
                 "INSERT INTO respondents (first_name, last_name, age) VALUES (:first, :last, :age);"
             ),
             {"first": first_name, "last": last_name, "age": age},
