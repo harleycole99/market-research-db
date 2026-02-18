@@ -11,3 +11,11 @@ def test_clean_name_removes_whitespace():
 
     # Assert: Check if the result is what we expect
     assert result == "Testy"
+
+
+def test_clean_name_only_accepts_alphabetic_characters():
+    wrong_name = "Charl7"
+
+    result = clean_name(wrong_name)
+
+    assert result is None

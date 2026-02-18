@@ -1,2 +1,8 @@
 def clean_name(name_string):
-    return name_string.strip().capitalize()
+
+    cleaned = name_string.strip().capitalize()
+
+    if cleaned.isalpha():
+        return cleaned
+    else:
+        return None
