@@ -26,12 +26,17 @@ try:
                 );
                 """
             )
+
+            cur.execute(
+                "INSERT INTO research_data (name, surname, age) VALUES (%s, %s, %s)",
+                ("John", "Doe", 30),
+            )
             cur.execute("SELECT * FROM research_data;")
 
             rows = cur.fetchall()
 
 
 except Exception as error:
-    print(f"❌ Connection failed: {error}")
+    print(f"Connection failed: {error}")
 
 print(rows)
