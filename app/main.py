@@ -1,6 +1,9 @@
 import streamlit as st
-from ingestion.load import load_db
+
+# from ingestion.load import load_db
+from ingestion.load import insert_respondent
 from ingestion.extract import clean_name
+
 
 with st.form("details"):
     name = st.text_input("Name")
@@ -13,4 +16,7 @@ if submitted:
 
 cleanname = clean_name(name)
 cleansurname = clean_name(surname)
-load_db(cleanname, cleansurname, age)
+
+# load_db(cleanname, cleansurname, age)
+
+insert_respondent(cleanname, cleansurname, age)

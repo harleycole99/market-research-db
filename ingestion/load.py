@@ -7,13 +7,13 @@ import streamlit as st
 ### ---- ONLINE load ---- ###
 
 
-def insert_respondent(first_name, last_name):
+def insert_respondent(first_name, last_name, age):
     conn = st.connection("neon", type="sql")
 
     with conn.session as session:
         session.execute(
-            "INSERT INTO respondents (first_name, last_name) VALUES (:first, :last);",
-            {"first": first_name, "last": last_name},
+            "INSERT INTO respondents (first_name, last_name, age) VALUES (:first, :last, :age);",
+            {"first": first_name, "last": last_name, "age": age},
         )
         session.commit()
 
