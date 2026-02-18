@@ -1,0 +1,11 @@
+# Secrets (CRITICAL)
+.env
+
+# Python virtual environment
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# OS specific files
+.DS_Store
