@@ -1,6 +1,6 @@
 import streamlit as st
 
 with st.form("details"):
-    st.text_input("name")
-
-st.form_submit_button("submit")
+    name = st.text_input("Name")
+    surname = st.text_input("Surname")
+    submitted = st.form_submit_button("submit")
