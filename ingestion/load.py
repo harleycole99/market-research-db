@@ -3,6 +3,7 @@
 
 from dotenv import load_dotenv
 import streamlit as st
+from sqlalchemy import text
 
 ### ---- ONLINE load ---- ###
 
@@ -12,7 +13,9 @@ def insert_respondent(first_name, last_name, age):
 
     with conn.session as session:
         session.execute(
-            "INSERT INTO respondents (first_name, last_name, age) VALUES (:first, :last, :age);",
+            text(
+                "INSERT INTO respondents (first_name, last_name, age) VALUES (:first, :last, :age);"
+            ),
             {"first": first_name, "last": last_name, "age": age},
         )
         session.commit()
