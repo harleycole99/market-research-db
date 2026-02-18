@@ -1,3 +1,5 @@
 import streamlit as st
 
-st.write("hello world")
+with st.form("details"):
+    st.text_input("name")
+    st.form_submit_button
