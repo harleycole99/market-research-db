@@ -1,5 +1,5 @@
 # import psycopg2
-# import os
+import os
 
 from dotenv import load_dotenv
 import streamlit as st
