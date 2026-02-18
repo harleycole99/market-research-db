@@ -6,4 +6,4 @@ with st.form("details"):
     submitted = st.form_submit_button("submit")
 
 if submitted:
-    st.write("Hello {name} {surname}")
+    st.write(f"Hello {name} {surname}")
